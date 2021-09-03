@@ -1,11 +1,16 @@
 package com.ecommerce.entities;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -25,9 +30,9 @@ public class Category {
 	private String shortText;
 	
 	// Une entité Category est en relation avec plusieurs entités Item
-//	@OneToMany
-//	@JoinColumn(name="category_id", referencedColumnName="id")
-//	private List<Item> items = new ArrayList<Item>();
+	@OneToMany
+	@JoinColumn(name="category_id", referencedColumnName="id")
+	private List<Item> items = new ArrayList<Item>();
 	
 
 	public int getId() {
@@ -54,13 +59,13 @@ public class Category {
 		this.shortText = shortText;
 	}
 
-//	public List<Item> getItems() {
-//		return items;
-//	}
-//
-//	public void setItems(List<Item> items) {
-//		this.items = items;
-//	}
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 
 	@Override
 	public String toString() {
